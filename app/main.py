@@ -1,19 +1,11 @@
 from fastapi import FastAPI
-from app.core.config import settings
+from app.api.routes_health import (router as health_check)
+from app.api.routes_requirements import (router as requirement_router)
+from app.api.routes_projects import (router as project_router)
+from app.api.routes_rag import (router as rag_router)
+app = FastAPI(title="Frontend Agent Workflow Platform")
 
-app = FastAPI(title=settings.app_name)
-
-
-@app.get("/health")
-def health_check() -> dict[str, str]:
-    return {
-        "status": "ok",
-        "env": settings.env,
-    }
-@app.get("/api/info")
-def get_app_info() -> dict[str, str]:
-    return {
-        "app_name": settings.app_name,
-        "env": settings.env,
-        "api_prefix": settings.api_prefix,
-    }
+app.include_router(health_check)
+app.include_router(requirement_router)
+app.include_router(project_router)
+app.include_router(rag_router)
