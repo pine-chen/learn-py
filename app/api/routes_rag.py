@@ -8,7 +8,7 @@ router = APIRouter(
 )
 
 @router.post("/ingest", response_model=RagIngestResponse)
-def ingest_rag(request: RagIngestRequest):
+def ingest_rag(request: RagIngestRequest = {"project_root": "/Users/chen/zyk/yunwei-client"}):
     try:
         return ingest_project(request.project_root)
 

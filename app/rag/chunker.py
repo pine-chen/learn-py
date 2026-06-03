@@ -22,7 +22,8 @@ def chunk_document(doc: Document, chunk_size: int = 500) -> list[Document]:
         chunks.append(Document(
             content = chunk_content,
             source = doc.source,
-            file_type = doc.file_type
+            file_type = doc.file_type,
+            module_type= doc.module_type,
         ))
         start = end
     return  chunks

@@ -2,7 +2,7 @@ from pathlib import Path
 
 from app.rag.chunker import chunk_document
 from app.rag.document_loader import load_file
-from app.rag.retriever import retriever
+from app.rag.chroma_retriever import retriever
 from app.services.project_scanner import get_js_files, get_vue_files
 
 def ingest_project(project_root: str) -> dict[str, int]:
@@ -15,6 +15,7 @@ def ingest_project(project_root: str) -> dict[str, int]:
 
     files = get_js_files(project_root) + get_vue_files(project_root)
 
+    retriever.reset()
     total_documents = 0
     total_chunks = 0
 

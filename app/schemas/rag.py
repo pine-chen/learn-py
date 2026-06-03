@@ -19,6 +19,8 @@ class RagSearchItem(BaseModel):
     content: str
     source: str
     file_type: str
+    module_type: str
+    distance: float | None = None
 
 
 class RagSearchResponse(BaseModel):
