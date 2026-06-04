@@ -76,9 +76,9 @@ class ChromaRetriever:
 
         allowed_module_types = {
             "views",
-            "api",
-            "store",
-            "router",
+            "apis",
+            "stores",
+            "routers",
             "components",
         }
 

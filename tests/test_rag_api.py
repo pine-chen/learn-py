@@ -5,7 +5,17 @@ from app.main import app
 client = TestClient(app)
 
 
-def test_rag_search_empty() -> None:
+def test_rag_search_empty(monkeypatch) -> None:
+    def fake_search_project_knowledge(query: str, limit: int = 10):
+        assert query == "不存在的关键词"
+        assert limit == 10
+        return []
+
+    monkeypatch.setattr(
+        "app.api.routes_rag.search_project_knowledge",
+        fake_search_project_knowledge,
+    )
+
     response = client.post(
         "/rag/search",
         json={
