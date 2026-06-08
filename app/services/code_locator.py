@@ -90,7 +90,7 @@ def group_documents_by_source(documents: list[Document]) -> list[CodeLocationIte
         # 取最小距离作为最佳匹配度指标
         best_distances = min(distances) if distances else None
 
-        # 为每个文档提取前500个字符作为证据片段
+        # 为每个分组提取前3个最相关的文档作为证据片段，限制证据数量以避免冗余
         evidences = [
             CodeEvidence(
                 content=doc.content[:500],
