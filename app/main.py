@@ -8,6 +8,7 @@ from app.api.routes_plans import (router as plan_router)
 from app.api.routes_workflow import (router as workflow_router)
 from app.api.routes_execution import router as execution_router
 from app.api.routes_trace import (router as trace_router)
+from app.api.routes_workflow_detail import (router as workflow_detail_router)
 app = FastAPI(title="Frontend Agent Workflow Platform")
 
 app.include_router(health_check)
@@ -19,3 +20,4 @@ app.include_router(plan_router)
 app.include_router(workflow_router)
 app.include_router(execution_router)
 app.include_router(trace_router)
+app.include_router(workflow_detail_router)
