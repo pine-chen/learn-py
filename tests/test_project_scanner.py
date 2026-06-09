@@ -37,7 +37,6 @@ def test_classify_files() -> None:
 
     result = classify_files(test_files)
 
-    print(f"\n分类结果:")
     print(f"  Views: {len(result['views'])} 个")
     for file in result["views"]:
         print(f"    - {file}")
@@ -97,7 +96,6 @@ def test_classify_files_with_real_project() -> None:
     all_files = vue_files + js_files
     result = classify_files(all_files)
 
-    print(f"\n真实项目分类结果:")
     print(f"  Views: {len(result['views'])} 个")
     print(f"  Routers: {len(result['routers'])} 个")
     print(f"  Stores: {len(result['stores'])} 个")
